@@ -1,45 +1,48 @@
-module.exports = {
-  context: __dirname + "/src",
-  entry: {
-  	javascript: "./app.js",
-  	html: "./index.html",
-  },
+'use strict';
 
-  output: {
-    filename: "app.js",
-    path: __dirname + "/dist",
-  },
+var path = require('path');
+var args = require('minimist')(process.argv.slice(2));
 
-  //指定可被import的模組檔案副檔名
-  resolve: {
-        extensions: ['', '.js', '.jsx']
-    },
+// List of allowed environments
+var allowedEnvs = ['dev', 'dist', 'test'];
 
-  module: {
-	  loaders: [
-	    {
-	      // 只針對js與jsx檔案
-	      test: /\.jsx?$/,
+// Set the correct environment
+var env;
+if(args._.length > 0 && args._.indexOf('start') !== -1) {
+  env = 'test';
+} else if (args.env) {
+  env = args.env;
+} else {
+  env = 'dev';
+}
+process.env.REACT_WEBPACK_ENV = env;
 
-	      // 只包含`src`目錄
-	      include: [
-	        __dirname + "/src"
-	      ],
-
-	      exclude: /node_modules/,
-
-          // 也可以使用'babel-loader'
-	      loaders: ['react-hot','babel?presets[]=es2015&presets[]=react'],
-
-	      // 其他設定preset或plugin
-	      // query: {
-	      //   presets: ['react', 'es2015']
-	      // }
-	    },
-	    {
-		  test: /\.html$/,
-		  loader: "file?name=[name].[ext]",
-		},
-	  ]
-  }
+// Get available configurations
+var configs = {
+  base: require(path.join(__dirname, 'cfg/base')),
+  dev: require(path.join(__dirname, 'cfg/dev')),
+  dist: require(path.join(__dirname, 'cfg/dist')),
+  test: require(path.join(__dirname, 'cfg/test'))
 };
+
+/**
+ * Get an allowed environment
+ * @param  {String}  env
+ * @return {String}
+ */
+function getValidEnv(env) {
+  var isValid = env && env.length > 0 && allowedEnvs.indexOf(env) !== -1;
+  return isValid ? env : 'dev';
+}
+
+/**
+ * Build the webpack configuration
+ * @param  {String} env Environment to use
+ * @return {Object} Webpack config
+ */
+function buildConfig(env) {
+  var usedEnv = getValidEnv(env);
+  return configs[usedEnv];
+}
+
+module.exports = buildConfig(env);
