@@ -1,0 +1,7 @@
+{
+  "generator-react-webpack": {
+    "appName": "ntuartFest2016OfficalSite",
+    "style": "css",
+    "postcss": false
+  }
+}
