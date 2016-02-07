@@ -1,22 +1,22 @@
-require('normalize.css');
-require('styles/App.css');
+import React from 'react';  
+import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { Router, Route, browserHistory, Link } from 'react-router';
 
-import React from 'react';
+import WebSite from './WebSite.react';
+import KeyVision from './KeyVision.react';
+import MainPage from './MainPage.react';
+//import routes from './routes';
 
-let yeomanImage = require('../images/yeoman.png');
+// Router.run(routes, Router.HistoryLocation, (Handler) => {
+//   React.render(<Handler />, document.getElementById('app'));
+// });
 
-class AppComponent extends React.Component {
-  render() {
-    return (
-      <div className="index">
-        <img src={yeomanImage} alt="Yeoman Generator" />
-        <div className="notice">Please edit <code>src/components/Main.js</code> to get started!</div>
-      </div>
-    );
-  }
-}
-
-AppComponent.defaultProps = {
-};
-
-export default AppComponent;
+ReactDOM.render((
+	<Router history={browserHistory}>
+		<Route name="WebSite" path="/" handler={WebSite}>
+	      <Route name="KeyVision" handler={KeyVision}/>
+	      <Route name="MainPage" handler={MainPage}/>
+	    </Route>
+    </Router>
+), document.getElementById('app')) 
