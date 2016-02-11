@@ -1,9 +1,13 @@
 import React from 'react';
+import NavBar from './NavBar.react';
 
 export default class MainPage extends React.Component {
-  render() {
+  render(){
     return (
-      <div className="index">It is Main Page!</div>
+      <div>
+      <NavBar />
+      It is Main Page!
+      </div>
     );
   }
 }
