@@ -28,19 +28,16 @@ export default class NavBar extends React.Component{
 	          onOpen={this.handleOnOpen.bind(this)}
 	          onClose={this.handleOnClose.bind(this)}
 	          customStyle={{
-	            color: '#fff',
+	            color: '#000',
 	            textAlign:'center',
 	            lineHeight:'50px',
-	            backgroundColor: '#E74C3C',
-	            border: 'solid 1px #E74C3C',
-	            borderRadius: '40%'
 	          }}
-	          distance={-80}
+	          distance={-100}
 	          width={50}
 	          height={50}
-	          y={500}
-	          x={-150} >
-	          <div><i className={this.state.menu1.isOpen ? "fa fa-times" : "fa fa-bars"}></i></div>
+	          y={0}
+	          x={-100} >
+	          <div><i className={this.state.menu1.isOpen ? "fa fa-times" : "fa fa-bars"}>MENU</i></div>
 	          <div ref="Map">Map</div>
 	          <div ref="Project">Project</div>
 	          <div ref="Sponsor">Sponsor</div>

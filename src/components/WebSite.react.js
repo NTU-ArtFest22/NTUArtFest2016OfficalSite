@@ -26,17 +26,3 @@ export default class WebSite extends React.Component {
   }
 }
 
-
-
-// render((
-//   <Router history={browserHistory}>
-//     <Route name="WebSite" path="/" component={WebSite}>
-//       <Route name="KeyVision" path="KeyVision" component={KeyVision}/>
-//       <Route name="MainPage" path="MainPage" component={MainPage}/>
-//     </Route>
-//   </Router>
-// ), document.getElementById('app'))
-
-// const WebSiteContainer = Container.create(WebSite);
-// export default WebSiteContainer;
-
