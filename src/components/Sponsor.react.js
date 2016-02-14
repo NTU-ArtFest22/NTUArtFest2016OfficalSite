@@ -5,6 +5,7 @@ export default class Sponsor extends React.Component{
 	render(){
 		return(
 			<div>
+				<h1 className="sponsor">Sponsors</h1>
 				<SponsorElement
 				id={0} />
 				<SponsorElement

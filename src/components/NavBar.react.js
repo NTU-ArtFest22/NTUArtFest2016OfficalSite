@@ -1,6 +1,8 @@
 import React from 'react';
 import Menu from './Menu.react';
 import classNames from 'classNames';
+import {  Link } from 'react-router';
+
 
 export default class NavBar extends React.Component{
 
@@ -34,8 +36,6 @@ export default class NavBar extends React.Component{
 	render(){
 
 		var classes = classNames({ fixedNavBar: this.state.fixed });
-		console.log("in NavBar.react, classes= " + classes );
-
 		return(
 			<div className={classes} >
 				<Menu
@@ -54,10 +54,10 @@ export default class NavBar extends React.Component{
 		          y={0}
 		          x={-100} >
 		          <div><i className={this.state.menu1.isOpen ? "fa fa-times" : "fa fa-bars"}><text>MENU</text></i></div>
-		          <div ref="Map">Map</div>
-		          <div ref="Project">Project</div>
-		          <div ref="Sponsor">Sponsor</div>
-		          <div ref="Store">Store</div>
+		          <div ref="Map"><a href="#map">Map</a></div>
+		          <div ref="Project"><a href="#projects">Project</a></div>
+		          <div ref="Sponsor"><Link to="Sponsor">Sponsor</Link></div>
+		          <div ref="Store"><Link to="Store">Store</Link></div>
 		        </Menu>
 	        </div>
 		);

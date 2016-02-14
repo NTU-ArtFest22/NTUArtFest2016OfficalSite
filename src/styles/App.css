@@ -2,7 +2,7 @@
 body {
 }
 
-.map{
+#map{
   position: absolute;
   top: 60px;
   background: url(../images/map.jpg);
@@ -12,24 +12,28 @@ body {
   height: 700px;
 }
 
+.Products{
+  position: absolute;
+  top: 1600px;
+  background: url(../images/gallery.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 700px;
+  height: 500px;
+  left: 20%;
+  margin: 50px;
+}
+
 .sponsor{
   position: absolute;
+  left: 10%;
   top: 800px;
 }
 
-.sponsor2{
+.StoreSlogan{
   position: absolute;
-  top: 950px;
-}
-
-.sponsor3{
-  position: absolute;
-  top: 1100px;
-}
-
-.sponsor4{
-  position: absolute;
-  top: 1250px;
+  top:1500px;
+  left: 10%;
 }
 
 .index .notice {
@@ -56,4 +60,10 @@ i text{
 #navBar {
   position: absolute;
   right:0;
+}
+
+#projects{
+  position: absolute;
+  top:2000px;
+  left: 10%;
 }

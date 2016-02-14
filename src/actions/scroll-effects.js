@@ -22,10 +22,22 @@ export default class ScrollEffect extends React.Component {
         // this.setState({
         //     animated: true
         // });
+        console.log("in singleAnimate");
+        var element = ReactDOM.findDOMNode(this);
+        if( this.state.animated ){
+            if( element.className != null )
+                element.className = "animated " + this.props.animate;
+        }
+
+        if( this.state.resumeAnimated ){
+             if( element.className != null )
+                element.className = "animated " + this.props.resumeAnimate;
+        }
         /* callback */
         setTimeout(() => {
             this.props.callback();
         }, this.props.duration * 1000);
+
     }
 
     queueAnimate() {
@@ -120,7 +132,7 @@ export default class ScrollEffect extends React.Component {
 
             }
 
-        }else if( element.getBoundingClientRect().top + 80 >= windowHeight ){
+        }else if( element.getBoundingClientRect().top +80 >= windowHeight ){
             
             console.log("top: " +  element.getBoundingClientRect().top + "  id: " + this.props.id );
             let currPos = window.scrollY;
@@ -139,6 +151,21 @@ export default class ScrollEffect extends React.Component {
                 });
             }
 
+        }else if( element.getBoundingClientRect().bottom <= 0 ){
+            let currPos = window.scrollY;
+            if( currPos > this.state.lastPos ){
+                this.setState({
+                    animated: false,
+                    resumeAnimated: true,
+                    lastPos: currPos
+                });
+                this.props.queueClass == "" && this.singleAnimate();
+                this.props.queueClass !== "" && this.queueAnimate();
+            }else{
+                this.setState({
+                    lastPos: currPos
+                });
+            }
         }
         
     }
