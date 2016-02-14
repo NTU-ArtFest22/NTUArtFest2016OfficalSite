@@ -17,6 +17,21 @@ body {
   top: 800px;
 }
 
+.sponsor2{
+  position: absolute;
+  top: 950px;
+}
+
+.sponsor3{
+  position: absolute;
+  top: 1100px;
+}
+
+.sponsor4{
+  position: absolute;
+  top: 1250px;
+}
+
 .index .notice {
   margin: 20px auto;
   padding: 15px 0;
