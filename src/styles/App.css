@@ -41,6 +41,18 @@ body {
   background: #666;
 }
 
+i text{
+  visibility: visible;
+}
+
+.fixedNavBar{
+  position: fixed;
+  width: 1200px;
+  height: 80px;
+  background: #666; 
+  z-index: 3000;
+}
+
 #navBar {
   position: absolute;
   right:0;

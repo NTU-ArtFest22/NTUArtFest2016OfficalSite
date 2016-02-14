@@ -33,7 +33,8 @@ export default class MenuIcon extends React.Component{
   }
 
   render() {
-    const {x, y, width, height, customStyle, onClick, customClass} = this.props;
+    const {x, y, width, height, customStyle, onClick, customClass } = this.props;
+    //console.log("classes = " + customClass );
     return (
       <Motion style={this.params[this.state.sequence]}>
         {({scaleX, scaleY}) =>

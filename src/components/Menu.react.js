@@ -1,13 +1,15 @@
 import React, {PropTypes} from 'react';
+import ReactDOM from 'react-dom';
 import {Motion, spring} from 'react-motion';
 import Item from './Item.react';
 import MenuIcon from './MenuIcon.react';
+import classNames from 'classNames';
 
 export default class Menu extends React.Component{
 
   constructor(props) {
     super(props);
-    this.state = {itemNumber: 1, status: "idle"};
+    this.state = {itemNumber: 1, status: "idle", rotate: false };
   }
 
   open() {
@@ -16,7 +18,11 @@ export default class Menu extends React.Component{
   }
 
   _open() {
-    this.setState({action: "open"});
+
+    //fint <text> tag
+    let element = ReactDOM.findDOMNode(this).children[0].children[0].children[0];
+    this.setState({action: "open", rotate: true } );
+    element.style.visibility = "hidden";
     this.refs.menuIcon.start();
     this.refs["item"+this.state.itemNumber].start();
   }
@@ -27,7 +33,11 @@ export default class Menu extends React.Component{
   }
 
   _close() {
-    this.setState({action: "close"});
+
+    //fint <text> tag
+    let element = ReactDOM.findDOMNode(this).children[0].children[0].children[0];
+    this.setState({action: "close", rotate: false });
+    element.style.visibility = "visible";
     this.refs.menuIcon.reverse();
     for(let i = this.state.itemNumber-1; i > 0; i-=1) {
       this.refs["item"+i].reverse();
@@ -54,6 +64,7 @@ export default class Menu extends React.Component{
   }
 
   _onClick() {
+
     if(this.state.action === "open") this._close();
     else this._open();
   }
@@ -67,13 +78,18 @@ export default class Menu extends React.Component{
     menuIcon = this.props.children[0];
     for( let i = 1; i < size; i++ ){
       children.push(this.props.children[i]);
-      console.log(this.props.children[i]);
+      //console.log(this.props.children[i]);
     }
-    
+
+    var classes = "";
+    classes = classNames({ rotate: this.state.rotate });
+    //console.log("in Menu.react, classes= " + classes );
+
     let items = [
       <MenuIcon
         ref="menuIcon"
         onClick={this._onClick.bind(this)}
+        customClass = {classes}
         customStyle={customStyle}
         width={width}
         height={height}

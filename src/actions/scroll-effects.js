@@ -38,17 +38,15 @@ export default class ScrollEffect extends React.Component {
         if( this.state.animated ){
             console.log("downAnimation");
             let setClass = (el) => {
-              console.log("wow");
+              
               el.style.visibility = "hidden";
               setTimeout(() => {
                 el.style.visibility = "visible";
-                console.log("before add, el.className = " + el.className );
                 el.className = el.className + ' animated ' + this.props.animate;
               }, number * (this.props.queueDuration * 1000));
               number++;
             };
             let findClass = (element) => {
-                console.log("Right here! className = " + element.className );
                  if( element.className != null )
                     element.className = "queue";
                 
@@ -67,17 +65,15 @@ export default class ScrollEffect extends React.Component {
             console.log("upAnimation");
 
             let setClass = (el) => {
-             console.log("haha");
               el.style.visibility = "hidden";
               setTimeout(() => {
                 el.style.visibility = "visible";
-                console.log("before add, el.className = " + el.className );
                 el.className = el.className + ' animated ' + this.props.resumeAnimate;
               }, number * (this.props.queueDuration * 1000));
               number++;
             };
             let findClass = (element) => {
-                console.log("Right here2! className = " + element.className );
+                
                 if( element.className != null )
                     element.className = "queue";
                 Array.prototype.forEach.call(element.childNodes, function(child) {
@@ -121,11 +117,12 @@ export default class ScrollEffect extends React.Component {
                         lastPos: currPos
                     });
                 }
-                    
+
             }
 
-        }else if( element.getBoundingClientRect().top + 20 <= windowHeight ){
+        }else if( element.getBoundingClientRect().top + 80 >= windowHeight ){
             
+            console.log("top: " +  element.getBoundingClientRect().top + "  id: " + this.props.id );
             let currPos = window.scrollY;
             console.log("currPos = "+ currPos + "   lastPos = "+ this.state.lastPos );
             if( currPos < this.state.lastPos ){
