@@ -37,7 +37,7 @@ export default class NavBar extends React.Component{
 
 		var classes = classNames({ fixedNavBar: this.state.fixed });
 		return(
-			<div className={classes} >
+			<div id="navBar" className={classes} >
 				<Menu
 		          name="menu1"
 		          direction="horizontal"
@@ -53,11 +53,15 @@ export default class NavBar extends React.Component{
 		          height={50}
 		          y={0}
 		          x={-100} >
-		          <div><i className={this.state.menu1.isOpen ? "fa fa-times" : "fa fa-bars"}><text>MENU</text></i></div>
-		          <div ref="Map"><a href="#map">Map</a></div>
-		          <div ref="Project"><a href="#projects">Project</a></div>
-		          <div ref="Sponsor"><Link to="Sponsor">Sponsor</Link></div>
-		          <div ref="Store"><Link to="Store">Store</Link></div>
+		          <div className="o-grid__item">
+			        <button className="c-hamburger c-hamburger--htx">
+			          <span>toggle menu</span>
+			        </button>
+			      </div>
+		          <div ref="Map"><Link to="/MainPage/#map">Map</Link></div>
+		          <div ref="Project"><Link to="/MainPage/#projects">Project</Link></div>
+		          <div ref="Sponsor"><Link to="/Sponsor">Sponsor</Link></div>
+		          <div ref="Store"><Link to="/Store">Store</Link></div>
 		        </Menu>
 	        </div>
 		);

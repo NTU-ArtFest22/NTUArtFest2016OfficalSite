@@ -14,7 +14,6 @@ body {
 
 .Products{
   position: absolute;
-  top: 1600px;
   background: url(../images/gallery.jpg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -27,14 +26,8 @@ body {
 .sponsor{
   position: absolute;
   left: 10%;
-  top: 800px;
 }
 
-.StoreSlogan{
-  position: absolute;
-  top:1500px;
-  left: 10%;
-}
 
 .index .notice {
   margin: 20px auto;
@@ -65,5 +58,11 @@ i text{
 #projects{
   position: absolute;
   top:2000px;
+  left: 10%;
+}
+
+
+#store{
+  position: absolute;
   left: 10%;
 }

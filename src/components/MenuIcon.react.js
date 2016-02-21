@@ -36,22 +36,24 @@ export default class MenuIcon extends React.Component{
     const {x, y, width, height, customStyle, onClick, customClass } = this.props;
     //console.log("classes = " + customClass );
     return (
-      <Motion style={this.params[this.state.sequence]}>
-        {({scaleX, scaleY}) =>
-          <div
-            onClick={onClick}
-            className={customClass}
-            style={assign({}, customStyle, {
-              transform: `translate3d(${x}px, ${y}px, 0) scaleX(${scaleX}) scaleY(${scaleY})`,
-              WebkitTransform: `translate3d(${x}px, ${y}px, 0) scaleX(${scaleX}) scaleY(${scaleY})`,
-              position: 'absolute',
-              width,
-              height
-            })} >
-            {this.props.children}
-          </div>
-        }
-      </Motion>
+      
+          <Motion style={this.params[this.state.sequence]}>
+          {({scaleX, scaleY}) =>
+            <div
+              onClick={onClick}
+              className={customClass}
+              style={assign({}, customStyle, {
+                transform: `translate3d(${x}px, ${y}px, 0) scaleX(${scaleX}) scaleY(${scaleY})`,
+                WebkitTransform: `translate3d(${x}px, ${y}px, 0) scaleX(${scaleX}) scaleY(${scaleY})`,
+                position: 'absolute',
+                width,
+                height
+              })} >
+              {this.props.children}
+            </div>
+          }
+        </Motion>
+       
     );
   }
 }

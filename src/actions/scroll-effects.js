@@ -18,6 +18,83 @@ export default class ScrollEffect extends React.Component {
         window.removeEventListener('scroll', this.handleScroll.bind(this));
     }
 
+    _scrollUp(){
+        let currPos = window.scrollY;
+
+        if( currPos < this.state.lastPos )
+            return true;
+        else{
+            this.setState({
+                lastPos: currPos
+            });
+            return false;
+        }
+    }
+
+    _scrollDown(){
+        let currPos = window.scrollY;
+
+        if( currPos > this.state.lastPos )
+            return true;
+        else{
+            this.setState({
+                lastPos: currPos
+            });
+            return false;
+        } 
+    }
+
+    _checkOpen(element){
+
+        let windowHeight = window.innerHeight;
+        console.log("in Open, top: " +  element.getBoundingClientRect().top + "  bottom: "+ element.getBoundingClientRect().bottom + "   left:  " + element.getBoundingClientRect().left  + "    right: "+ element.getBoundingClientRect().right + "  id: " + this.props.id  + "  type: " + this.props.type );
+
+        if( this.props.type === "block" ){
+            if( element.getBoundingClientRect().top + 50 <= windowHeight && element.getBoundingClientRect().top > windowHeight/10 && this._scrollDown() ){
+                return true;
+            }else if( element.getBoundingClientRect().top >= -50 && this._scrollUp() ){  
+                return true;
+            }else
+                return false;
+
+
+        }else if( this.props.type === "text" ){
+
+            if( element.getBoundingClientRect().top <= windowHeight  && element.getBoundingClientRect().top > windowHeight/5 && this._scrollDown() )
+                return true;
+            else{
+                return false;
+            }
+        }
+    }
+
+    _checkResume(element){
+
+        let windowHeight = window.innerHeight;
+        console.log("in Resume, top: " +  element.getBoundingClientRect().top + "   bottom: "+ element.getBoundingClientRect().bottom + "  id: " + this.props.id  + "  type: " + this.props.type );
+
+        if( element.getBoundingClientRect().bottom <= 20 && element.getBoundingClientRect().top <= 0 && this._scrollDown() ){
+            return true;
+        }
+
+        if( this.props.type === "block" ){
+             if( element.getBoundingClientRect().top + 80 >= windowHeight && this._scrollUp() ){
+                return true;
+            }else{
+                return false;
+            }
+        }else if( this.props.type === "text" ){
+            console.log("It's text, windowHeight:  " + windowHeight);
+
+            if( element.getBoundingClientRect().top >= windowHeight && this._scrollUp() ){
+                console.log("resume text, top: " + element.getBoundingClientRect().top );
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
+
     singleAnimate() {
         // this.setState({
         //     animated: true
@@ -115,57 +192,35 @@ export default class ScrollEffect extends React.Component {
         
         if (!this.state.animated) {
            
-            if( element.getBoundingClientRect().top + 50 <= windowHeight ){
+            //if( element.getBoundingClientRect().top + 50 <= windowHeight ){
+            if( this._checkOpen(element) ){
+                console.log("open! id: " + this.props.id );
                 let currPos = window.scrollY;
-                if( currPos > this.state.lastPos ){
-                    this.setState({
-                        animated: true,
-                        resumeAnimated: false,       
-                    });
-                    this.props.queueClass == "" && this.singleAnimate();
-                    this.props.queueClass !== "" && this.queueAnimate();
-                }else{
-                    this.setState({
-                        lastPos: currPos
-                    });
-                }
+
+                this.setState({
+                    animated: true,
+                    resumeAnimated: false,
+                    lastPos: currPos       
+                });
+                this.props.queueClass == "" && this.singleAnimate();
+                this.props.queueClass !== "" && this.queueAnimate();
 
             }
 
-        }else if( element.getBoundingClientRect().top +80 >= windowHeight ){
+        }else if( this._checkResume(element) ){
             
-            console.log("top: " +  element.getBoundingClientRect().top + "  id: " + this.props.id );
+            console.log("resume! id: " + this.props.id );
             let currPos = window.scrollY;
-            console.log("currPos = "+ currPos + "   lastPos = "+ this.state.lastPos );
-            if( currPos < this.state.lastPos ){
-                this.setState({
-                    animated: false,
-                    resumeAnimated: true,
-                    lastPos: currPos
-                });
-                this.props.queueClass == "" && this.singleAnimate();
-                this.props.queueClass !== "" && this.queueAnimate();
-            }else{
-                this.setState({
-                    lastPos: currPos
-                });
-            }
 
-        }else if( element.getBoundingClientRect().bottom <= 0 ){
-            let currPos = window.scrollY;
-            if( currPos > this.state.lastPos ){
-                this.setState({
-                    animated: false,
-                    resumeAnimated: true,
-                    lastPos: currPos
-                });
-                this.props.queueClass == "" && this.singleAnimate();
-                this.props.queueClass !== "" && this.queueAnimate();
-            }else{
-                this.setState({
-                    lastPos: currPos
-                });
-            }
+            this.setState({
+                animated: false,
+                resumeAnimated: true,
+                lastPos: currPos
+            });
+            this.props.queueClass == "" && this.singleAnimate();
+            this.props.queueClass !== "" && this.queueAnimate();
+           
+
         }
         
     }
@@ -212,6 +267,7 @@ ScrollEffect.defaultProps = {
     offset: 0,
     className: "",
     duration: 1,
+    type:"",
     queueDuration: 1,
     queueClass: "",
     id:"",

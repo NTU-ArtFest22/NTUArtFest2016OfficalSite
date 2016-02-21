@@ -10,14 +10,14 @@ export default class SponsorElement extends React.Component{
 	}
 
 	render(){
-		let topValue = 900 + 150*this.props.id;
+		let topValue = 100 + 150*this.props.id;
 		let styles = {
 			position: 'absolute',
   			top: topValue
 		};
 		return(
 			<section style = {styles} >
-					<ScrollEffect animate="fadeInUp" resumeAnimate="fadeOutDown" queueClass="queue" id={this.props.id} duration="2" queueDuration="0">
+					<ScrollEffect animate="fadeInUp" resumeAnimate="fadeOutDown" type="block" queueClass="queue" id={this.props.id} duration="2" queueDuration="0">
 						<ul>
 				            <li className="queue">
 				                test

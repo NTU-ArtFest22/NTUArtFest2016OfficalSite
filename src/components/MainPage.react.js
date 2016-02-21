@@ -9,12 +9,8 @@ export default class MainPage extends React.Component {
   render(){
     return (
     	<div>
-		      <div id="navBar">
-		      	<NavBar />
-		      </div>
+		      <NavBar />
 		      <Map />
-		      <Sponsor />
-		      <Store />
 		      <Project />
 	    </div>
     );

@@ -9,7 +9,7 @@ export default class Menu extends React.Component{
 
   constructor(props) {
     super(props);
-    this.state = {itemNumber: 1, status: "idle", rotate: false };
+    this.state = {itemNumber: 1, status: "idle", active: false };
   }
 
   open() {
@@ -20,9 +20,9 @@ export default class Menu extends React.Component{
   _open() {
 
     //fint <text> tag
-    let element = ReactDOM.findDOMNode(this).children[0].children[0].children[0];
-    this.setState({action: "open", rotate: true } );
-    element.style.visibility = "hidden";
+    //let element = ReactDOM.findDOMNode(this).children[0].children[0].children[0];
+    this.setState({action: "open", active: true } );
+    //element.style.visibility = "hidden";
     this.refs.menuIcon.start();
     this.refs["item"+this.state.itemNumber].start();
   }
@@ -35,9 +35,9 @@ export default class Menu extends React.Component{
   _close() {
 
     //fint <text> tag
-    let element = ReactDOM.findDOMNode(this).children[0].children[0].children[0];
-    this.setState({action: "close", rotate: false });
-    element.style.visibility = "visible";
+    //let element = ReactDOM.findDOMNode(this).children[0].children[0].children[0];
+    this.setState({action: "close", active: false });
+    //element.style.visibility = "visible";
     this.refs.menuIcon.reverse();
     for(let i = this.state.itemNumber-1; i > 0; i-=1) {
       this.refs["item"+i].reverse();
@@ -82,7 +82,7 @@ export default class Menu extends React.Component{
     }
 
     var classes = "";
-    classes = classNames({ rotate: this.state.rotate });
+    //classes = classNames({ active: this.state.active });
     //console.log("in Menu.react, classes= " + classes );
 
     let items = [
