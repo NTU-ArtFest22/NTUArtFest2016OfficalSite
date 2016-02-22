@@ -35,6 +35,13 @@ export default class MenuIcon extends React.Component{
   render() {
     const {x, y, width, height, customStyle, onClick, customClass } = this.props;
     //console.log("classes = " + customClass );
+    var buttonClasses = "";
+    if( this.props.active ){
+      buttonClasses = "c-hamburger c-hamburger--htx active";
+    }else{
+      buttonClasses = "c-hamburger c-hamburger--htx";
+    }
+
     return (
       
           <Motion style={this.params[this.state.sequence]}>
@@ -49,7 +56,9 @@ export default class MenuIcon extends React.Component{
                 width,
                 height
               })} >
-              {this.props.children}
+              <button className={buttonClasses}>
+                <span>toggle menu</span>
+              </button>
             </div>
           }
         </Motion>
@@ -63,6 +72,7 @@ MenuIcon.propTypes = {
   y: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
+  active: PropTypes.bool,
   customStyle: PropTypes.object,
   customClass: PropTypes.string
 }

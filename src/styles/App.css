@@ -4,7 +4,7 @@ body {
 
 #map{
   position: absolute;
-  top: 60px;
+  top: 100px;
   background: url(../images/map.jpg);
   background-size: 100% 100%;
   background-repeat: no-repeat;

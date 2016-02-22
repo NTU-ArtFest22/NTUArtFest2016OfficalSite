@@ -322,11 +322,12 @@ img {
 .c-hamburger span {
   display: block;
   position: absolute;
-  top: 44px;
+  top: 25px;
   left: 18px;
   right: 18px;
-  height: 8px;
-  background: white;
+  height: 4px;
+  width: 30px;
+  background-color: #000;
 }
 
 .c-hamburger span::before,
@@ -335,17 +336,17 @@ img {
   display: block;
   left: 0;
   width: 100%;
-  height: 8px;
-  background-color: #fff;
+  height: 4px;
+  background-color: #000;
   content: "";
 }
 
 .c-hamburger span::before {
-  top: -20px;
+  top: -10px;
 }
 
 .c-hamburger span::after {
-  bottom: -20px;
+  bottom: -10px;
 }
 
 /**
@@ -381,7 +382,7 @@ img {
  * down to center and transform into an "x".
  */
 .c-hamburger--htx {
-  background-color: #000000;
+  background-color: #fff;
 }
 
 .c-hamburger--htx span {
@@ -409,7 +410,7 @@ img {
 
 /* active state, i.e. menu open */
 .c-hamburger--htx.active {
-  background-color: #cb0032;
+  background-color: #fff;
 }
 
 .c-hamburger--htx.active span {

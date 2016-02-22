@@ -95,6 +95,7 @@ export default class Menu extends React.Component{
         height={height}
         x={x}
         y={y}
+        active={this.state.active}
         key={"menuIcon"} >
         {menuIcon.props.children}
       </MenuIcon>
