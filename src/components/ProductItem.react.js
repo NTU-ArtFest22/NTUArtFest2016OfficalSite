@@ -7,7 +7,8 @@ export default class ProductItem extends React.Component{
 	constructor(){
 		super();
 		this.state={
-			left:0
+			left:0,
+			arrowLeft:0
 		};
 	}
 
@@ -17,8 +18,10 @@ export default class ProductItem extends React.Component{
 		//console.log("window.innerWidth = " + window.innerWidth + " element width = " + element.getBoundingClientRect().right);
 		let width = element.getBoundingClientRect().right - element.getBoundingClientRect().left
 		let productsLeft = ( window.innerWidth - width )/2;
+		let arrow = ( window.innerWidth - this.props.arrowWidth )/2;
 		this.setState({
-			left: productsLeft
+			left: productsLeft,
+			arrowLeft: arrow
 		});
 		//console.log("productsLeft = " + productsLeft);
 
@@ -52,36 +55,56 @@ export default class ProductItem extends React.Component{
 			top: 768 * (this.props.productID),
 			left: this.state.left,
 			height: 768,
-			padding: 55
+			padding: 150
 
 		}
 
 		let ProductStyles={
-			width: '300',
-			height: '300',
+			width: 400,
+			height: 400,
 			background: this.props.url,
-			margin: '50',
+			margin: 45,
 			float: 'left'
 		}
 
 		let IntroductionStyles={
-			float: 'left'
+			float: 'left',
+			margin: 45,
+			height: 400
+		}
+
+		let fontStyles = {
+			width: 300,
+			height: 300
+		}
+
+		let arrowStyles = {
+			position: 'absolute',
+			left: this.state.arrowLeft,
+			top: '83%'
+		}
+
+		let UpArrowStyles = {
+			position: 'absolute',
+			left: this.state.arrowLeft,
+			top: '12%'
 		}
 
 		let name = 'product'+ this.props.productID;
 		let dest = 'product' + (parseInt(this.props.productID)+1);
+		let preDest = 'product' + (parseInt(this.props.productID)-1);
 		console.log("name = " + name);
 		console.log("dest = " + dest );
 
 		return(
 			<Element name={name} style={styles}>
-			
+				<Link activeClass="active" className={name} to={preDest} spy={true} smooth={true} duration={500} ><div className="UpArrow" style={UpArrowStyles}></div></Link>
 				<div style={ProductStyles}></div>
 				<div style={IntroductionStyles}>
-					<div>Introduction</div>
-					<button>BUY</button>
-					<Link activeClass="active" className={name} to={dest} spy={true} smooth={true} duration={500} ><button>NEXT</button></Link>
+					<div style={fontStyles}>Aliquam ante ac id. Adipiscing interdum lorem praesent fusce pellentesque arcu feugiat. Consequat sed ultricies rutrum. Sed adipiscing eu amet interdum lorem blandit vis ac commodo aliquet integer vulputate phasellus lorem ipsum dolor lorem magna consequat sed etiam adipiscing interdum.</div>
+					<button className="button-trigger-overlay">BUY</button>
 				</div>
+				<Link activeClass="active" className={name} to={dest} spy={true} smooth={true} duration={500} ><div className="arrow" style={arrowStyles}></div></Link>
 
 			</Element>
 		);
@@ -90,5 +113,6 @@ export default class ProductItem extends React.Component{
 
 ProductItem.defaultProps = {
 	url: "",
-	productID:""
+	productID:"",
+	arrowWidth:""
 }

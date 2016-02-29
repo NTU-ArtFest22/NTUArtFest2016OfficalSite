@@ -17,16 +17,20 @@ export default class Store extends React.Component{
 				<ProductsPhoto
 					width="600"
 					height="400"
-					margin="50"/>
+					margin="50"
+					arrowWidth="60"/>
 				<ProductItem
 					url="url('../images/product.jpg')"
-					productID="1"/>
+					productID="1"
+					arrowWidth="60"/>
 				<ProductItem
 					url="url('../images/product.jpg')"
-					productID="2"/>
+					productID="2"
+					arrowWidth="60"/>
 				<ProductLastItem
 					url="url('../images/product.jpg')"
-					productID="3"/>
+					productID="3"
+					arrowWidth="60"/>
 			</div>
 
 		);

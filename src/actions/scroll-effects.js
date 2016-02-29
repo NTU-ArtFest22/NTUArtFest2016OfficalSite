@@ -262,6 +262,7 @@ export default class ScrollEffect extends React.Component {
 
         console.log("in render");
 
+
         if( this.state.animated ){
             console.log("animate");
             var classes = classNames({

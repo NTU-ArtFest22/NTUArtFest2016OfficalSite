@@ -8,7 +8,8 @@ export default class ProductsPhoto extends React.Component{
 	constructor(){
 		super();
 		this.state={
-			left: 0
+			left: 0,
+			arrowLeft:0
 		};
 	}
 
@@ -17,8 +18,10 @@ export default class ProductsPhoto extends React.Component{
 		//console.log(element);
 		//console.log("window.innerWidth = " + window.innerWidth + " element width = " + this.props.width);
 		let productsLeft = ( window.innerWidth - this.props.width )/2;
+		let arrow = ( window.innerWidth - this.props.arrowWidth )/2;
 		this.setState({
-			left: productsLeft
+			left: productsLeft,
+			arrowLeft: arrow
 		});
 		//console.log("productsLeft = " + productsLeft);
 		Events.scrollEvent.register('begin', function() {
@@ -38,20 +41,32 @@ export default class ProductsPhoto extends React.Component{
 
 	render(){
 
-		let styles={
+
+		let photoStyles={
 			left: this.state.left-this.props.margin,
 			width: this.props.width,
 			height: this.props.height,
 			margin: this.props.margin
 		}
+
+		let arrowStyles = {
+			position: 'absolute',
+			left: this.state.arrowLeft,
+			top: '90%'
+		}
+
+		let name = "product0";
+
 		const{
 			props, state
 		} = this;
 
 		return(
-			<div className="Products" style={styles}>
-				<Link activeClass="active" className="photos" to="product1" spy={true} smooth={true} duration={500} ><button>NEXT</button></Link>
-			</div>
+			<Element name={name}>
+				<div className="Products" style={photoStyles}>
+				</div>
+				<Link activeClass="active" className="photos" to="product1" spy={true} smooth={true} duration={500} ><div className="arrow" style={arrowStyles}></div></Link>
+			</Element>
 		);
 	}
 	
@@ -60,5 +75,6 @@ export default class ProductsPhoto extends React.Component{
 ProductsPhoto.defaultProps = {
     width:"",
     height:"",
-    margin:""
+    margin:"",
+    arrowWidth:""
 }
