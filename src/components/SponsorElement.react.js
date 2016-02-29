@@ -10,7 +10,7 @@ export default class SponsorElement extends React.Component{
 	}
 
 	render(){
-		let topValue = 100 + 150*this.props.id;
+		let topValue = 150 + 150*this.props.id;
 		let styles = {
 			position: 'absolute',
   			top: topValue

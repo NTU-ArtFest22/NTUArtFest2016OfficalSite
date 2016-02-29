@@ -9,7 +9,7 @@ export default class MainPage extends React.Component {
   render(){
     return (
     	<div>
-		      <NavBar />
+		      
 		      <Map />
 		      <Project />
 	    </div>

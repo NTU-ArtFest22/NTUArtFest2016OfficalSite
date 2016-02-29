@@ -12,10 +12,40 @@ export default class ScrollEffect extends React.Component {
         };
         var lastPos = 0;
         window.addEventListener('scroll', throttle(200, this.handleScroll.bind(this)));
-       
     }
+
+    componentDidMount(){
+
+        console.log("in didmount");
+        if( this._inScreen( ReactDOM.findDOMNode(this) ) ){
+
+            if (!this.state.animated){
+                console.log("open! id: " + this.props.id );
+                let currPos = window.scrollY;
+
+                this.setState({
+                    animated: true,
+                    resumeAnimated: false,
+                    lastPos: currPos       
+                });
+                this.props.queueClass == "" && this.singleAnimate();
+                this.props.queueClass !== "" && this.queueAnimate();
+            }
+    
+        }
+
+    }
+
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll.bind(this));
+    }
+
+    _inScreen(element){
+
+        if( element.getBoundingClientRect().top >= 0 )
+            return true;
+        else
+            return false;
     }
 
     _scrollUp(){
@@ -231,6 +261,7 @@ export default class ScrollEffect extends React.Component {
         } = this;
 
         console.log("in render");
+
         if( this.state.animated ){
             console.log("animate");
             var classes = classNames({

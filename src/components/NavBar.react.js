@@ -52,16 +52,12 @@ export default class NavBar extends React.Component{
 		          width={50}
 		          height={50}
 		          y={0}
-		          x={-100} >
-		          <div className="o-grid__item">
-			        <button className="c-hamburger c-hamburger--htx">
-			          <span>toggle menu</span>
-			        </button>
-			      </div>
-		          <div ref="Map"><Link to="/MainPage/#map">Map</Link></div>
-		          <div ref="Project"><Link to="/MainPage/#projects">Project</Link></div>
-		          <div ref="Sponsor"><Link to="/Sponsor">Sponsor</Link></div>
-		          <div ref="Store"><Link to="/Store">Store</Link></div>
+		          x={1180} >
+		          <div ref="menu"></div>
+		          <div ref="Map"><Link to="/OverView/MainPage">Map</Link></div>
+		          <div ref="Project"><Link to="/OverView/MainPage#projects">Project</Link></div>
+		          <div ref="Sponsor"><Link to="/OverView/Sponsor">Sponsor</Link></div>
+		          <div ref="Store"><Link to="/OverView/Store">Store</Link></div>
 		        </Menu>
 	        </div>
 		);

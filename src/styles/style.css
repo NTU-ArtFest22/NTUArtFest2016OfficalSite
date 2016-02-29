@@ -300,8 +300,8 @@ img {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  width: 96px;
-  height: 96px;
+  width: 60px;
+  height: 60px;
   font-size: 0;
   text-indent: -9999px;
   -webkit-appearance: none;
@@ -325,8 +325,8 @@ img {
   top: 25px;
   left: 18px;
   right: 18px;
-  height: 4px;
   width: 30px;
+  height: 4px;
   background-color: #000;
 }
 
@@ -382,7 +382,7 @@ img {
  * down to center and transform into an "x".
  */
 .c-hamburger--htx {
-  background-color: #fff;
+  background-color: rgba(100%, 100%, 100%, 0);
 }
 
 .c-hamburger--htx span {
@@ -410,7 +410,7 @@ img {
 
 /* active state, i.e. menu open */
 .c-hamburger--htx.active {
-  background-color: #fff;
+  background-color: rgba(100%, 100%, 100%, 0);
 }
 
 .c-hamburger--htx.active span {

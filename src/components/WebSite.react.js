@@ -10,8 +10,8 @@ export default class WebSite extends React.Component {
   render() {
   	return(
   		<div>
-  			  <button type="button"><Link to="KeyVision">KeyVision</Link></button>
-  	          <button type="button"><Link to="MainPage">MainPage</Link></button>
+  			  <button type="button"><Link to="/KeyVision">KeyVision</Link></button>
+  	          <button type="button"><Link to="/OverView">MainPage</Link></button>
   		</div>
   	);
   }

@@ -4,7 +4,7 @@ body {
 
 #map{
   position: absolute;
-  top: 100px;
+  top: 80px;
   background: url(../images/map.jpg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -17,10 +17,7 @@ body {
   background: url(../images/gallery.jpg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  width: 700px;
-  height: 500px;
-  left: 20%;
-  margin: 50px;
+  top: 120px;
 }
 
 .sponsor{
@@ -44,15 +41,16 @@ i text{
 
 .fixedNavBar{
   position: fixed;
-  width: 1200px;
-  height: 80px;
-  background: #666; 
+  width: 100%;
+  height: 60px;
+  background: #666 !important; 
   z-index: 3000;
 }
 
 #navBar {
-  position: absolute;
   right:0;
+  height: 60px;
+ 
 }
 
 #projects{
@@ -65,4 +63,17 @@ i text{
 #store{
   position: absolute;
   left: 10%;
+}
+
+.element {
+  height:1000px;
+  background-color: #ededed;
+  font-size: 45px;
+  border-top:1px solid #000;
+  padding-top:55px;
+  padding-left:10px;
+}
+
+.active {
+  color:red !important;
 }
