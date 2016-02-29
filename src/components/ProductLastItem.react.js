@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Scroll from 'react-scroll';
 import { Link, Element, Events } from 'react-scroll';
+import data from '../stores/data';
 
 export default class ProductLastItem extends React.Component{
 	constructor(){
@@ -48,8 +49,12 @@ export default class ProductLastItem extends React.Component{
 			props, state
 		} = this;
 
+		let name = 'product'+ this.props.productID;
+		let preDest = 'product' + (parseInt(this.props.productID)-1);
+		console.log("name = " + name);
+		const product = data.lookupProduct(name);
 
-		console.log("innerHeight= " + window.innerHeight);
+		//console.log("innerHeight= " + window.innerHeight);
 		let styles={
 			position: 'absolute',
 			top: 768 * (this.props.productID),
@@ -88,9 +93,6 @@ export default class ProductLastItem extends React.Component{
 		}
 
 
-		let name = 'product'+ this.props.productID;
-		let preDest = 'product' + (parseInt(this.props.productID)-1);
-		console.log("name = " + name);
 		
 
 		return(
@@ -99,7 +101,10 @@ export default class ProductLastItem extends React.Component{
 				<div style={ContainerStyles}>
 					<div style={ProductStyles}></div>
 					<div style={IntroductionStyles}>
-						<div style={fontStyles}>Aliquam ante ac id. Adipiscing interdum lorem praesent fusce pellentesque arcu feugiat. Consequat sed ultricies rutrum. Sed adipiscing eu amet interdum lorem blandit vis ac commodo aliquet integer vulputate phasellus lorem ipsum dolor lorem magna consequat sed etiam adipiscing interdum.</div>
+						<div style={fontStyles}>
+							<h1>{product.productname}</h1>
+							{product.description}
+						</div>
 						<button className="button-trigger-overlay">BUY</button>
 					</div>
 				</div>
