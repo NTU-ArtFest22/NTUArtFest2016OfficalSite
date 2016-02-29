@@ -1,0 +1,125 @@
+body {
+    color: #383838;
+    font: 600 14px/24px "Montserrat", "Lato", "Open Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", Sans-Serif;
+/*    background: #383838;*/
+}
+.box {
+    border: thick solid #383838;
+    opacity: 0.5;
+    cursor: pointer;
+    width: 100px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    transition-property: border-color;
+    transition-duration: 0.1s;
+    transition-timing-function: cubic-bezier(.42, 0, .58, 1);
+    z-index: 1;
+}
+.box:hover {
+/*    background: #ffffff;*/
+    color: #2c82ff;
+    border: thick solid #2c82ff;
+}
+
+.projectSection{
+    position: absolute;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.sortButton{
+    display: block;
+    
+}
+.sortTags {
+    height: 200px;
+/*    width: 60%;*/
+    background-color: #F1B2DC;
+    
+
+    padding-top: 20px;
+    padding-left: 20px;
+
+}
+
+
+
+ul {
+    list-style:none;
+    padding-left:0;
+}
+
+
+
+
+#allProjects{
+    background-repeat: repeat-x;    
+/*    width: 60%;*/
+    background-color: azure;
+    padding-top: 20px;
+    padding-left: 2%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+#allProjects .project{  
+    opacity: 0.6;
+/*	background: black;*/
+    transition-property: all;
+    transition-duration: 0.4s;
+    transition-timing-function: cubic-bezier(.42, 0, .58, 1);
+    
+    width: 20%; 
+/*    height: 300px;*/
+    margin-right: 2%;
+    margin-bottom: 2%;
+    display:inline-block;
+    position:relative;
+}
+
+
+#allProjects .project:hover {
+    opacity: 1;
+    width: 20%; 
+/*    height: 300px;*/
+}
+
+img{
+    width: 100%;
+}
+#allProjects a {
+    position:absolute;
+    bottom: 0px;
+    display: none;
+    padding-left: 20px;
+    padding-top: 10px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    width: 100%;
+    height: 20%;
+    background-color: rgba(25, 29, 32, 0.5);
+    color:#fff;
+}
+
+
+#allProjects .project a:hover{
+    text-decoration: none;
+}
+.chooseButton {
+    display: block;
+}
+
+.selected {
+    background-color: red;
+    color: #345345;
+}
+
+.sortTags button:hover{
+    background-color: #FEDD00;
+}
